@@ -1,0 +1,73 @@
+<ul class="mposts">
+    {% for post in posts %}
+    <li class="post">
+        <div class="post-content">
+        <h1 class="thetitle">{{ post.title }}</h1>
+            <div class="post-main">
+             <div class="post-thumbnail">
+            <a href="{{ url_for('.user', username=post.author.username) }}">
+                {% if post.author.real_avatar %}
+                  <img class="img-rounded profile-thumbnail3" src="{{ post.author.real_avatar }}">
+        {% else %}
+                <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
+                {% endif %}
+            </a>
+        </div>
+             <div class="post-username-date">
+                 <a href="{{ url_for('.user', username=post.author.username) }}">{{ post.author.username }}</a>
+                 {% if current_user.can(Permission.FOLLOW) and user != current_user %}
+                {% if not current_user.is_following(user) %}
+                <a href="{{ url_for('.yfollow', username=user.username,id=id) }}" class="btn btn-primary">关注</a>
+                {% else %}
+                <a  href="{{ url_for('.yunfollow', username=user.username,id=id) }}" class="btn btn-default">取消关注</a>
+                {% endif %}
+            {% endif %}
+                 <div>{{ moment(post.timestamp).format('LLL') }}</div>
+             </div>
+                </div>
+             <div class="mpost-body">
+                {% if post.body_html %}
+                    {{ post.body_html | safe }}
+                {% else %}
+                    {{ post.body }}
+                {% endif %}
+            </div>
+            <div class="post-footer" id="post-footer">
+                {% if current_user.is_authenticated and current_user!=post.author %}
+                {% if post not in current_user.userloves  %}
+                    <a class="btn_like" href="{{ url_for('.love', id=post.id) }}#post-footer">
+                    <i class=" ic-like">喜欢</i>
+                        <i class="ic-like1">{{ post.love}}</i>
+                </a>
+                    {% elif post in current_user.userloves  %}
+                      <a  class="btn_like1" href="{{ url_for('.notlove', id=post.id) }}#post-footer">
+                        <i class="ic-unlike">喜欢</i>
+                        <i class="ic-unlike1">{{ post.love}}</i>
+                </a>
+                    {% endif %}
+                    {% else %}
+                   <a class="btn_like">
+                    <i class=" ic-like">喜欢</i>
+                        <i class="ic-like1">{{ post.love}}</i>
+                   </a>
+                {% endif %}
+                <div class="write_and_comment">
+                {% if current_user == post.author %}
+                <a href="{{ url_for('.edit', id=post.id) }}">
+                    <span class="label label-primary">编辑</span>
+                </a>
+                {% elif current_user.is_administrator() %}
+                <a href="{{ url_for('.edit', id=post.id) }}">
+                    <span class="label label-danger">编辑 [管理员]</span>
+                </a>
+                {% endif %}
+                <a href="{{ url_for('.post', id=post.id) }}#comments">
+                    <span class="label label-primary">{{ post.comments.count() }}条评论</span>
+                </a>
+               </div>
+
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

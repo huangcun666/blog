@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}沃的博客-修改博客{% endblock %}
+{% block head %}
+{{super()}}
+    <script src="{{ url_for('static',filename='ckeditor/ckeditor.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>编辑博客</h1>
+</div>
+<form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.title(id='title',class='title',placeholder='  标         题') }}
+        {{ form.body(id="editor1",class='editor1') }}
+        <script>
+            CKEDITOR.replace
+            ('editor1',
+                {filebrowserUploadUrl:'./ckupload/'});
+        </script>
+        {{ form.submit(class='update_post_btn') }}
+    </form>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

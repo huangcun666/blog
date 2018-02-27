@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}沃的博客-更改用户名{% endblock %}
+
+{% block styles %}
+{{super()}}
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='change.css') }}">
+{% endblock %}
+{% block content %}
+ <div class="change">
+ <div class="main">
+<div class="page-header">
+    <h1>更改用户名</h1>
+</div>
+    {{ wtf.quick_form(form) }}
+ </div>
+ </div>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+ <script src="{{ url_for('static',filename='jquery/jquery-2.1.4/jquery.js/jquery.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='jquery/change_username.js') }}"></script>
+{% endblock %}

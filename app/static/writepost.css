@@ -1,0 +1,48 @@
+body{
+    overflow-x: hidden;
+    background: url("bg.jpg") no-repeat center;
+    background-size:100% 100%;
+    min-width: 800px;
+    min-height:650px;
+}
+a.mainpage{
+    text-decoration:none;
+    border: 1px solid rgba(236, 114, 89, 0.8);
+    border-radius: 20px;
+    color: #ec7259;
+    display: block;
+    font-size: 15px;
+    margin-left: 20px;
+    width: 13%;
+    height: 50px;
+    min-width:60px ;
+    text-align: center;
+    float:left;
+    line-height: 50px;
+}
+.main{
+    width:65%;
+    height:100%;
+    margin: 70px auto 0;
+}
+.title{
+    width: 100%;
+    font-size: 30px;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+textarea,#submit{
+    display: none;
+}
+#submit{
+    width:70px;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin:0 auto 0;
+    background-color: #428bca;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+}

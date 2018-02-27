@@ -1,0 +1,90 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}沃的博客{% endblock %}
+
+{% block head %}
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+{% block styles %}
+{{super()}}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"
+      xmlns:color="http://www.w3.org/1999/xhtml">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+              <a class="mainpage" href="{{ url_for('main.index') }}">首页</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">切换导航栏</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <form class="form-wrapper" action="{{ url_for('main.search') }}" method="POST">
+                        {{g.search_form.hidden_tag()}}
+                        {{g.search_form.search(class="search-input",placeholder="搜索关键词...") }}
+                        <input type="submit" value="" class="search-btn ">
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class='writebtn' href="{{ url_for('main.writepost') }}"><i>写博客</i></a></li>
+                {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                <li><a  class='check_comment' href="{{ url_for('main.moderate') }}">审评</a></li>
+                {% endif %}
+
+                {% if current_user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {% if current_user.real_avatar %}
+                              <img class="profile-thumbnail2" src="{{current_user.real_avatar }}">
+                            {% else %}
+                        <img src="{{ current_user.gravatar(size=18) }}">
+                            {% endif %}
+                        {{ current_user.username }} <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class='change_password_btn' href="{{ url_for('auth.change_password') }}"><span>修改密码</span></a></li>
+                        <li><a  class='change_email_btn' href="{{ url_for('auth.change_email_request') }}"><span>修改邮箱</span></a></li>
+                        <li><a  class='change_user_btn' href="{{ url_for('auth.change_username') }}"><span>修改用户名</span></a></li>
+                        <li><a class='over' href="{{ url_for('auth.logout') }}"><span>注销</span></a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a  class="login" href="{{ url_for('auth.login') }}">登录</a></li>
+                {% endif %}
+                   {% if current_user.is_authenticated %}
+                <li><a class="profile" href="{{ url_for('main.user', username=current_user.username) }}" style="outline: none;">个人信息</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block content %}
+<div class="container1">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% block page_content %}{% endblock %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment('2.10.3', '//cdn.bootcss.com/moment.js/2.10.3/moment-with-locales.min.js') }}
+    <script type="text/javascript" src="{{ url_for('static',filename='jquery/base.js') }}"></script>
+{% endblock %}

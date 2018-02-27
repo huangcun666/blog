@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}沃的博客{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+<div class="page-imge">
+</div>
+</div>
+<div class="post-tabs">
+    <div class="post_contents">
+    <ul class="nav nav-tabs">
+        <li{% if not show_followed %} class="active"{% endif %}><a  class='all' href="{{ url_for('.show_all') }}">所有</a></li>
+        {% if current_user.is_authenticated %}
+        <li{% if show_followed %} class="active"{% endif %}><a class="my_follow" href="{{ url_for('.show_followed') }}">我的关注</a></li>
+        {% endif %}
+    </ul>
+    {% include '_indexpost.html' %}
+    </div>
+    <div class="bet_author" id="fixed">
+        <div class="bet_title">
+            <span>推荐作者</span>
+            <span class="other">
+                <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.submit(id='submit1',class='refresh') }}
+                </form>
+            </span>
+        </div>
+        <ul class="bet_users">
+           {% for user in users[:10] %}
+               <li class="bet_user">
+                <div class="post-thumbnail">
+            <a href="{{ url_for('.user', username=user.username) }}">
+                {% if user.real_avatar %}
+                  <img class="img-rounded profile-thumbnail3" src="{{ user.real_avatar }}">
+        {% else %}
+                <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=40) }}">
+                {% endif %}
+            </a>
+        </div>
+             <div class="post-main1">
+             <div class="post-author1">
+                 <a href="{{ url_for('.user', username=user.username) }}">{{user.username }}</a>
+                         {% if current_user.can(Permission.FOLLOW) and current_user!=user %}
+                {% if not current_user.is_following(user) %}
+                <a href="{{ url_for('.user_follow', username=user.username) }}" class="btn btn-primary r">关注</a>
+                {% else %}
+                <a  href="{{ url_for('.user_unfollow', username=user.username) }}" class="btn btn-default r">取消关注</a>
+                {% endif %}
+            {% endif %}
+             </div>
+                 <div class="count_post">
+                     <p>写了{{loves_body_count[user][0]}}k字  {{loves_body_count[user][1] }}喜欢</p>
+                 </div>
+            </div>
+               </li>
+            {% endfor %}
+        </ul>
+        <a class="fixed" href="{{ url_for('.index') }}#fixed"><i class="i1">固定专栏</i></a>
+    </div>
+</div>
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endif %}
+{% endblock %}

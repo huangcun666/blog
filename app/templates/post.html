@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}沃的博客-博文{% endblock %}
+
+{% block page_content %}
+{% include '_userposts.html' %}
+{% if current_user.can(Permission.COMMENT) %}
+<div class="comment-form">
+    <h3 id="comments">评论</h3>
+    <form method="POST" class="the_comment-form">
+     {{ form.hidden_tag() }}
+    {{ form.body(class='comment_body',placeholder='写下你的评论再走...') }}
+    {{ form.submit(class='sub_comment') }}
+    </form>
+</div>
+{% endif %}
+{% include '_comments.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.post', fragment='#comments', id=posts[0].id) }}
+</div>
+{% endif %}
+{% endblock %}
+

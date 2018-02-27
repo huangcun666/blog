@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}沃的博客-删除博客{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1 class="alert-danger">删除博客!!!</h1>
+     {% include 'delete_post.html' %}
+</div>
+
+{% endblock %}

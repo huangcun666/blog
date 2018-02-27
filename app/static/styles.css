@@ -1,0 +1,602 @@
+body{
+    font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+div.navbar-default{
+    padding-right: 0px;
+    min-width:800px;
+}
+ div.container{
+    min-width:750px;
+}
+button.navbar-toggle{
+    float: left;
+}
+div.page-imge{
+    background: url("dog.jpg")no-repeat center;
+    width: 100%;
+    background-size:100% 200px;
+    height:200px;
+}
+a.mainpage,a.profile,a.login{
+    font-size: 20px;
+    outline: none;
+}
+a.mainpage{
+    color: #777;
+    font-size: 25px;
+    display:inline-block;
+    text-decoration: none;
+    margin:6px 10px 0 10px;
+}
+div.container a.writebtn{
+    display:flex;
+    border-radius: 20px;
+    margin:2px 0 2px 0;
+    font-size:17px;
+    height:45px;
+    width: 85px;
+    padding-top:12px;
+    background-color: #ea6f5a;
+    color: #fff;
+    outline: none;
+}
+ul.dropdown-menu a{
+    outline: none;
+}
+div.navbar form.form-wrapper{
+    margin: 6px 10px 0;
+    position: relative;
+    width:170px;
+}
+.search-input{
+    outline: none;
+    background: #eee none repeat scroll 0 0;
+    border: 1px solid #eee;
+    border-radius: 40px;
+    font-size: 14px;
+    height: 38px;
+    padding: 0 40px 0 20px;
+    transition: width 0.5s ease 0.1s;
+    width:100%;
+}
+input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-text-fill-color: #000000 !important;
+    -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;
+    background-color:transparent;
+    background-image: none;
+    transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
+}
+input {
+    background-color:transparent;
+}
+form.form-wrapper input.search-btn{
+    outline: none;
+    border: none;
+    background: #eee none repeat scroll 0 0;
+    background-image: url(search1.png);
+    background-repeat: no-repeat;
+    width:25px;
+    height: 25px;
+    position:absolute;
+    right:10px;
+    top: 6px;
+}
+.profile-thumbnail,.profile-thumbnail1,.profile-thumbnail3{
+    position: absolute;
+}
+.profile-thumbnail1{
+    width: 256px;
+    height: 256px;
+}
+.profile-thumbnail2{
+    border-radius: 3px;
+    width: 18px;
+    height: 18px;
+}
+.profile-thumbnail3{
+    border-radius: 3px;
+    width: 40px;
+    height: 40px;
+}
+div.profile-header {
+    min-height: 260px;
+    margin-left: 280px;
+}
+div.profile-header .edit_per{
+    outline: none;
+    color: white;
+    font-size: 16px;
+    background-color:#428bca;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+div.profile-header .admin{
+    background-color: #ea6f5a;
+}
+div.profile-header a.btn{
+    outline: none;
+}
+div.post-tabs {
+    width: 100%;
+    margin-top: 16px;
+}
+ul.posts,ul.mposts{
+    list-style-type: none;
+    padding: 0px;
+    margin: 16px auto 0px;
+}
+div.container1{
+    font-weight: 400;
+    width:70%;
+    margin: 0 auto 0;
+    min-width:750px;
+}
+ul.posts{
+    border-top: 1px solid #e0e0e0;
+}
+div.post-tabs ul.posts {
+    margin: 0px;
+    border-top: none;
+}
+ul.posts li.post {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+ul.posts li.post:hover {
+    background-color: #f0f0f0;
+}
+div.post-date {
+    float:left;
+}
+div.post-author {
+    font-weight: bold;
+}
+div.post-author span{
+    margin-left: 5px;
+}
+.user-title span{
+    padding:2px;
+    background-color: #0f74a8;
+    border-radius: 5px;
+    font-size:11px;
+    color: #faffff;
+}
+div.post-thumbnail,div.comment-thumbnail {
+    position: absolute;
+}
+div.post-content {
+    margin-left: 48px;
+    min-height: 48px;
+}
+div.post-main1{
+    margin-left: 48px;
+    min-height: 48px;
+}
+div.post-username-date{
+    margin-left: 50px;
+    font-weight: bold;
+}
+div.post-main{
+    margin-top: 50px;
+    height: 45px;
+}
+div.post-footer1{
+    margin-top:5px;
+    text-align:left;
+}
+div.post-footer a,div.post-footer1 a{
+    text-decoration: none;
+    outline: none;
+}
+div.post-footer{
+    width: 100%;
+    float: left;
+}
+ul.comments {
+    list-style-type: none;
+    padding: 0px;
+    margin: 100px auto 0px;
+    width:70%;
+}
+ul.comments li.comment {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+ul.comments li.comment:nth-child(1) {
+    border-top: 1px solid #e0e0e0;
+}
+ul.comments li.comment:hover {
+    background-color: #f0f0f0;
+}
+div.comment-date {
+    float: right;
+}
+div.comment-author {
+    font-weight: bold;
+}
+div.comment-thumbnail {
+    position: absolute;
+}
+div.comment-content {
+    margin-left: 48px;
+    min-height: 48px;
+}
+div.comment-form {
+    margin: 16px 0px 16px 5px;
+}
+div.pagination {
+    width: 100%;
+    text-align: right;
+    padding: 0px;
+    margin: 0px;
+}
+div.flask-pagedown-preview {
+    overflow:auto;
+    margin: 10px 0px 10px 0px;
+    border: 1px solid #e0e0e0;
+    padding: 4px;
+    text-align: left;
+    height:300px;
+    margin-top: 1px;
+
+}
+div.flask-pagedown-preview h1 {
+    font-size: 140%;
+}
+div.flask-pagedown-preview h2 {
+    font-size: 130%;
+}
+div.flask-pagedown-preview h3 {
+    font-size: 120%;
+}
+.post-body{
+    max-height: 180px;
+    overflow: hidden;
+}
+.post-body h1 {
+    font-size: 140%;
+}
+.post-body h2 {
+    font-size: 130%;
+}
+.post-body h3 {
+    font-size: 120%;
+}
+div.body-content{
+    min-width:500px;
+    max-height: 180px;
+}
+div.body-content .mytitle,div.body-content1 .mytitle{
+    font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    display: inherit;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+    font-weight:700;
+    outline: none;
+    min-height:29px;
+    max-height:57px;
+    overflow: hidden;
+
+}
+div.body-content1{
+    float: left;
+}
+div.image{
+    float: right;
+    width:140px;
+    height: 130px;
+    margin-left:10px;
+    overflow: hidden;
+}
+div.image a{
+    outline: none;
+}
+div.image img{
+    width: 140px;
+    height:130px;
+    border-radius:8px;
+}
+.table.followers tr{
+    border-bottom: 1px solid #e0e0e0;
+}
+.alert{
+    border: 1px solid #3e8f3e;
+    font-size: 17px;
+    border-radius: 5px;
+    color:#3e8f3e;
+    background:white;
+}
+a.change_password_btn{
+    outline: none;
+    font-size: 16px;
+    background: url("changepassword.png") no-repeat 10px 5px;
+}
+.change_password_btn span{
+    vertical-align: middle;
+    padding-left: 30px;
+}
+a.change_email_btn{
+    outline: none;
+    font-size: 16px;
+    background: url("changeemail.png") no-repeat 10px 5px;
+}
+.change_email_btn span{
+    vertical-align: middle;
+    padding-left: 30px;
+}
+a.check_comment{
+    outline: none;
+}
+a.change_user_btn{
+    outline: none;
+    font-size: 16px;
+    background: url("changeuser.png") no-repeat 10px 5px;
+}
+.change_user_btn span{
+    vertical-align: middle;
+    padding-left: 30px;
+
+}
+.over{
+    font-size: 16px;
+    background: url("over.png") no-repeat 10px 5px;
+}
+.over span{
+    vertical-align: middle;
+    padding-left: 30px;
+}
+.thetitle{
+    font-size: 300%;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 20px 0 0;
+    margin-bottom: 30px;
+}
+div.mpost-body{
+    margin-top: 30px;
+    padding: 20px;
+}
+div.mpost-body p img{
+    width: 80%;
+    height: auto;
+    margin:0 10% 0;
+}
+div.mpost-body p{
+    font-size:110%;
+}
+
+.btn{
+    height: 20px;
+    font-size: 12px;
+    border-radius:20px;
+    padding:1px 12px;
+}
+
+span.label{
+    padding-top: 5px;
+    font-size: 16px;
+}
+span.label1{
+    background: url("comment.png") no-repeat;
+    padding-left: 18px;
+    font-size:14px;
+    color: #707070;
+}
+.comment_body{
+    padding: 5px;
+    width:100%;
+    height:150px;
+    margin: 10px auto 0;
+    border: 1px solid lightgray;
+}
+.sub_comment{
+    background-color: #42c02e;
+    border: medium none;
+    border-radius: 20px;
+    color: #fff !important;
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-size: 16px;
+    margin: 10px 40px 0;
+    outline:none;
+    padding: 8px 18px;
+    width: 78px;
+}
+.comment-body{
+    margin-top: 10px;
+}
+.label2,.label3 {
+    border-radius: 0.25em;
+    color: #fff;
+    display: inline;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0.3em 0.6em 0.3em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+    background-color: #428bca;
+}
+.label3{
+    background-color:#ea6f5a;
+}
+.change{
+    font-size: 14px;
+    text-align: center;
+    height: 100%;
+    min-height: 650px;
+}
+.main{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    margin:60px auto 0;
+    padding: 50px 50px 30px;
+    width: 400px;
+}
+.form-group{
+    width:300px;
+    text-align: left;
+}
+.form-group input{
+    border-radius:6px;
+    height: 45px;
+}
+#submit{
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin:0 auto 0;
+    background-color: #428bca;
+    color: white;
+    height: 40px;
+}
+div.comment-form{
+    margin: 100px auto 0;
+    width:70%;
+}
+
+div.comment-form input#submit{
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin:30px 10px 0 0 ;
+    background-color:#42c02e;
+    color: white;
+    height: 40px;
+}
+
+.title{
+    width: 100%;
+    font-size: 30px;
+    border: 1px solid lightgray;
+}
+.update_post_btn{
+    border-radius: 5px;
+
+}
+div.post_contents{
+    width: 70%;
+    float: left;
+}
+div.search_post_contents{
+    width: 100%;
+}
+div.bet_author{
+    width: 30%;
+    float: left;
+}
+div.bet_author ul.bet_users{
+    list-style-type: none;
+    height: 45px;
+    margin-top:10px;
+    min-width: 248px;
+    padding-left: 10px;
+}
+div.post-author1{
+    font-weight: bold;
+}
+div.post-username-date a.btn{
+    outline: none;
+}
+div.post-author1 a.r{
+    text-align: center;
+    float: right;
+    outline: none;
+}
+div.post-author a{
+    outline: none;
+}
+a.my_follow,a.all{
+    outline: none;
+}
+span.label4{
+    background: url("love2.png") no-repeat;
+    padding-left: 18px;
+    font-size:14px;
+    color: #707070;
+}
+a.btn_like,a.btn_like1{
+    float: left;
+    margin-left: 10px;
+    width:150px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid  #ea6f5a;
+    display: block;
+    outline: none;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ea6f5a;
+    font-size: 20px;
+    overflow: hidden;
+    border-radius: 50px;
+}
+a.btn_like1 {
+    color: white;
+    background-color:#ea6f5a;
+}
+i.ic-like{
+    padding-left:25px;
+    background: url("love.png") no-repeat 0 50%;
+}
+i.ic-unlike{
+    padding-left:25px;
+    background: url("love1.png") no-repeat 0 50%;
+}
+i.ic-like1{
+    background: url("line.png") no-repeat;
+    padding-left:30px;
+}
+i.ic-unlike1{
+    background: url("line1.png") no-repeat;
+    padding-left:30px;
+}
+div.write_and_comment{
+    float: right;
+    height:50px;
+    margin-right: 10px;
+}
+div.write_and_comment a{
+    line-height: 50px;
+}
+div.bet_title{
+    margin-top: 10px;
+    color: #d2c367;
+    min-width: 248px;
+    padding-left: 10px;
+}
+div.bet_title input.refresh{
+    color:#d2c367;
+    outline: none;
+    border: 1px solid #fff;
+}
+div.bet_author a.fixed{
+    background-color: #f7f7f7;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    color: #787878;
+    font-size: 13px;
+    display: block;
+    width:100%;
+    height: 35px;
+    margin:5px 0 0 5px;
+    text-decoration: none;
+    outline: none;
+}
+i.i1{
+    line-height:35px;
+    padding-left:35%;
+}
+span.other{
+    float: right;
+}

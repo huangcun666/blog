@@ -1,0 +1,31 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}沃的博客-发表博文{% endblock %}
+{% block head %}
+{{super()}}
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='writepost.css') }}">
+    <script src="{{ url_for('static',filename='ckeditor/ckeditor.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  <a class="mainpage" href="{{ url_for('main.index') }}"  style="outline:none;text-decoration: none;">回首页</a>
+ <div class="main">
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.title(id='title',class='title',placeholder='  标         题') }}
+        {{ form.body(id="editor1",class='editor1') }}
+        <script>
+            CKEDITOR.replace
+            ('editor1',
+                {filebrowserUploadUrl:'./ckupload/'});
+        </script>
+        {{ form.submit() }}
+    </form>
+ </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <script type="text/javascript" src="{{ url_for('static',filename='jquery/writepost.js') }}"></script>
+{% endblock %}

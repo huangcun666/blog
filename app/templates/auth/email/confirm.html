@@ -1,0 +1,7 @@
+﻿<p>你好{{ user.username }}用户,</p>
+<p>欢迎注册 <b>沃的博客</b></p>
+<p>请点击下面链接进行验证:</p>
+<a href="{{ url_for('auth.confirm', token=token, _external=True) }}">点击这里</a>
+<p>另外你也可以在浏览器中复制下面链接进行验证:</p>
+<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+<p>感谢你的使用</p>
