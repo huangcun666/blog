@@ -12,10 +12,10 @@ class Config:
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 465
     MAIL_USE_SSL =True
-    MAIL_USERNAME ='895828310@qq.com'
-    MAIL_PASSWORD ='dltgurusytfibcai'
+    MAIL_USERNAME ='xxx@xxx.com'
+    MAIL_PASSWORD ='xxxxxxx'
     FLASKY_MAIL_SUBJECT_PREFIX = '[沃的博客]'
-    FLASKY_MAIL_SENDER = '沃的博客 <895828310@qq.com>'
+    FLASKY_MAIL_SENDER = '沃的博客 <xxxx@xx.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     FLASKY_POSTS_PER_PAGE = 20
     FLASKY_FOLLOWERS_PER_PAGE = 50
