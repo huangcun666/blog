@@ -1,11 +1,13 @@
-body{
-    overflow-x: hidden;
-    background: url("bg.jpg") no-repeat center;
+div.write_post{
+    width: 100%;
+    position: absolute;
+    background: url("http://hc666.oss-cn-shenzhen.aliyuncs.com/bgm.jpg") no-repeat center;
     background-size:100% 100%;
-    min-width: 800px;
-    min-height:650px;
+    min-width: 960px;
+    min-height:750px;
 }
 a.mainpage{
+    margin-top: 75px;
     text-decoration:none;
     border: 1px solid rgba(236, 114, 89, 0.8);
     border-radius: 20px;
@@ -20,10 +22,10 @@ a.mainpage{
     float:left;
     line-height: 50px;
 }
-.main{
+div.main{
     width:65%;
     height:100%;
-    margin: 70px auto 0;
+    margin:75px auto 0;
 }
 .title{
     width: 100%;
@@ -40,9 +42,10 @@ textarea,#submit{
     padding: 5px;
     font-size: 16px;
     text-align: center;
-    margin:0 auto 0;
+    margin:10px 0 0 10px;
     background-color: #428bca;
     color: white;
     border-radius: 5px;
     height: 40px;
+    border: none;
 }

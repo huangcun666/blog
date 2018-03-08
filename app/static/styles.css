@@ -1,21 +1,16 @@
 body{
     font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
 }
-div.navbar-default{
-    padding-right: 0px;
-    min-width:800px;
-}
- div.container{
-    min-width:750px;
-}
-button.navbar-toggle{
-    float: left;
-}
 div.page-imge{
-    background: url("dog.jpg")no-repeat center;
     width: 100%;
-    background-size:100% 200px;
     height:200px;
+    text-align: center;
+}
+
+div.page-imge img{
+    text-align: center;
+    height: 200px;
+    margin:0 auto 0;
 }
 a.mainpage,a.profile,a.login{
     font-size: 20px;
@@ -364,7 +359,16 @@ div.mpost-body p img{
     margin:0 10% 0;
 }
 div.mpost-body p{
-    font-size:110%;
+    font-size:120%;
+}
+div.mpost-body h1 {
+    font-size: 150%;
+}
+div.mpost-body h2 {
+    font-size: 140%;
+}
+div.mpost-body h3 {
+    font-size: 130%;
 }
 
 .btn{

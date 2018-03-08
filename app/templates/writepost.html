@@ -5,10 +5,11 @@
 {% block head %}
 {{super()}}
      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='writepost.css') }}">
-    <script src="{{ url_for('static',filename='ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>
 {% endblock %}
 
 {% block content %}
+    <div class="write_post">
   <a class="mainpage" href="{{ url_for('main.index') }}"  style="outline:none;text-decoration: none;">回首页</a>
  <div class="main">
     <form method="post">
@@ -23,6 +24,7 @@
         {{ form.submit() }}
     </form>
  </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
