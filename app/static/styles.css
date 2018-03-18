@@ -528,6 +528,7 @@ span.label4{
     color: #707070;
 }
 a.btn_like,a.btn_like1{
+    cursor:pointer;
     float: left;
     margin-left: 10px;
     width:150px;

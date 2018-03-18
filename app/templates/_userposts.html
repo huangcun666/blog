@@ -35,14 +35,14 @@
             <div class="post-footer" id="post-footer">
                 {% if current_user.is_authenticated and current_user!=post.author %}
                 {% if post not in current_user.userloves  %}
-                    <a class="btn_like" href="{{ url_for('.love', id=post.id) }}#post-footer">
-                    <i class=" ic-like">喜欢</i>
-                        <i class="ic-like1">{{ post.love}}</i>
+                    <a class="btn_like l" id='{{ post.id }}'>
+                    <i class=" ic-like j">喜欢</i>
+                        <i class="ic-like1 k">{{ post.love}}</i>
                 </a>
                     {% elif post in current_user.userloves  %}
-                      <a  class="btn_like1" href="{{ url_for('.notlove', id=post.id) }}#post-footer">
-                        <i class="ic-unlike">喜欢</i>
-                        <i class="ic-unlike1">{{ post.love}}</i>
+                      <a  class="btn_like1 l" id='{{post.id}}'>
+                        <i class="ic-unlike j">喜欢</i>
+                        <i class="ic-unlike1 k">{{ post.love}}</i>
                 </a>
                     {% endif %}
                     {% else %}

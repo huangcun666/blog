@@ -7,7 +7,7 @@
 {% block page_content %}
 <div class="page-header">
 <div class="page-imge">
-    <img alt="" src="http://hc666.oss-cn-shenzhen.aliyuncs.com/bmg.jpg"/>
+<img alt="" src="http://hc666.oss-cn-shenzhen.aliyuncs.com/bmg.jpg"/>
 </div>
 </div>
 <div class="post-tabs">
@@ -20,7 +20,7 @@
     </ul>
     {% include '_indexpost.html' %}
     </div>
-    <div class="bet_author" id="fixed">
+    <div class="bet_author" id='fixed'>
         <div class="bet_title">
             <span>推荐作者</span>
             <span class="other">
@@ -47,9 +47,7 @@
                  <a href="{{ url_for('.user', username=user.username) }}">{{user.username }}</a>
                          {% if current_user.can(Permission.FOLLOW) and current_user!=user %}
                 {% if not current_user.is_following(user) %}
-                <a href="{{ url_for('.user_follow', username=user.username) }}" class="btn btn-primary r">关注</a>
-                {% else %}
-                <a  href="{{ url_for('.user_unfollow', username=user.username) }}" class="btn btn-default r">取消关注</a>
+                <a class="btn btn-primary r" name="{{ user.username }}">关注</a>
                 {% endif %}
             {% endif %}
              </div>
@@ -59,8 +57,8 @@
             </div>
                </li>
             {% endfor %}
+	    <a class='fixed' href="{{ url_for('.index') }}#fixed"><i class="i1">固定专栏</i></a>
         </ul>
-        <a class="fixed" href="{{ url_for('.index') }}#fixed"><i class="i1">固定专栏</i></a>
     </div>
 </div>
 {% if pagination %}

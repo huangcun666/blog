@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, abort, flash, request,\
-    current_app, make_response,g
+    current_app, make_response,g,jsonify
 from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
 from . import main
@@ -125,7 +125,7 @@ def index():
         num=0
         for post in user.posts:
             num+=post.love
-        if num>=1:
+        if num>=5:
             if current_user.is_anonymous:
                 users1.append(user)
                 loves_body_count[user]=[(round(user.body_counts/1000,2)),num]
@@ -170,22 +170,26 @@ def user(username):
 @main.route('/love/<int:id>',methods=['GET','POST'])
 @login_required
 def love(id):
+    id=int(id)
     post=Post.query.get_or_404(id)
-    current_user.userloves.append(post)
-    post.love+=1
-    db.session.add(post)
-    db.session.add(current_user)
-    return redirect(url_for('.post',id=id))
+    if post not in current_user.userloves:
+        current_user.userloves.append(post)
+        post.love+=1
+        db.session.add(post)
+        db.session.add(current_user)
+    return jsonify({'result':'喜欢'})
 
 @main.route('/notlove/<int:id>',methods=['GET','POST'])
 @login_required
 def notlove(id):
+    id=int(id)
     post=Post.query.get_or_404(id)
-    current_user.userloves.remove(post)
-    post.love-=1
-    db.session.add(post)
-    db.session.add(current_user)
-    return redirect(url_for('.post',id=id))
+    if post in current_user.userloves:
+        current_user.userloves.remove(post)
+        post.love-=1
+        db.session.add(post)
+        db.session.add(current_user)
+    return jsonify({'result':'不喜欢'})
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
@@ -322,7 +326,7 @@ def user_follow(username):
     if current_user.is_following(user):
         return redirect(url_for('.index'))
     current_user.follow(user)
-    return redirect(url_for('.index'))
+    return jsonify({'result':'取消关注'})
 
 @main.route('/yfollow/<username>/<int:id>')
 @login_required
@@ -374,7 +378,7 @@ def user_unfollow(username):
     if not current_user.is_following(user):
         return redirect(url_for('.index', username=username))
     current_user.unfollow(user)
-    return redirect(url_for('.index', username=username))
+    return jsonify({'result':'取消关注'})
 
 
 @main.route('/followers/<username>')
